@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #1 in DatabaseHelper.updatePosts(posts:):DatabaseHelper.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UserViewModel.getUserById(userId:):UserViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "usersDisplayable">
+            </PersistentString>
+            <PersistentString
+               value = "usersDisplayable.filter{$0.id == userId}.first">
+            </PersistentString>
+            <PersistentString
+               value = "usersDisplayable.filter{$0.id == userId}.first?.id">
+            </PersistentString>
+            <PersistentString
+               value = "self.postViewModel">
+            </PersistentString>
+            <PersistentString
+               value = "usersDisplayable.filter{$0.id == userId}">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PostsViewController.tableView(_:cellForRowAt:):PostsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postViewModel.postsDisplayable[indexPath.row].id">
+            </PersistentString>
+            <PersistentString
+               value = "postViewModel.postsDisplayable[indexPath.row]">
+            </PersistentString>
+            <PersistentString
+               value = "postViewModel.postsDisplayable[indexPath.row].userId">
+            </PersistentString>
+            <PersistentString
+               value = "postViewModel.postsDisplayable[indexPath.row].body">
+            </PersistentString>
+            <PersistentString
+               value = "postViewModel.postsDisplayable[indexPath.row].title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DatabaseHelper.updateComments(comments:):DatabaseHelper.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CommentViewModel.commentDisplayable.getter:CommentViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "commentDisplayableInternal">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static PostCoreModel.getAll(moc:):PostModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "posts[0].userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CommentViewModel.commentDisplayable.getter:CommentViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "commentDisplayableInternal.filter{$0.postId == postId}">
+            </PersistentString>
+            <PersistentString
+               value = "commentDisplayableInternal">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static PostCoreModel.create(from:moc:):PostModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "PostTableViewCell.setupCell(with:userDisplayable:):PostTableViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postDisplayable.id">
+            </PersistentString>
+            <PersistentString
+               value = "postDisplayable.title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CoreDataHelper.persistentStoreCoordinator():CoreDataHelper.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "applicationDocumentsDirectory().absoluteString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
