@@ -6,37 +6,33 @@
 //
 
 import UIKit
+import RxSwift
 
 class PostsViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 	private lazy var postNavigation = PostNavigation(controller: self)
+	private let viewModel = PostViewModel()
+	private var disposeBag = DisposeBag()
 
-	let dataSource = PostDataSource()
-
-	lazy var viewModel : PostViewModel = {
-		let viewModel = PostViewModel(dataSource: dataSource)
-		return viewModel
-	}()
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.dataSource = dataSource
-		tableView.delegate = self
-		self.tableView.dataSource = self.dataSource
-		self.dataSource.data.addAndNotify(observer: self) { [weak self] in
-			self?.tableView.reloadData()
-		}
+		tableView.dataSource = nil
+		tableView.delegate = nil
+		setupBindingAndActions()
 		viewModel.getData()
 	}
+	
+	func setupBindingAndActions() {
+		let postCellIdentifier = "PostTableViewCell"
+		viewModel.dataSource.bind(to: tableView.rx.items(cellIdentifier: postCellIdentifier, cellType: PostTableViewCell.self)) {  row, element, cell in
+			cell.setupCell(with: element)
+		}.disposed(by: disposeBag)
 
-}
-
-
-extension PostsViewController: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-		postNavigation.navigate(to: PostRoute.postDetail.rawValue, params: [viewModel.dataSource?.data.value[indexPath.row]])
+		Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(PostDisplayable.self))
+			.bind { [weak self] indexPath, item in
+				self?.tableView.deselectRow(at: indexPath, animated: true)
+				self?.postNavigation.navigate(to: PostRoute.postDetail.rawValue, params: [item])
+			}.disposed(by: disposeBag)
 	}
-
 }
