@@ -19,11 +19,12 @@ class PostsViewController: UIViewController {
 		super.viewDidLoad()
 		tableView.dataSource = nil
 		tableView.delegate = nil
+		tableView.accessibilityIdentifier = "table-posts"
 		setupBindingAndActions()
 		viewModel.getData()
 	}
 	
-	func setupBindingAndActions() {
+	private func setupBindingAndActions() {
 		let postCellIdentifier = "PostTableViewCell"
 		viewModel.dataSource.bind(to: tableView.rx.items(cellIdentifier: postCellIdentifier, cellType: PostTableViewCell.self)) {  row, element, cell in
 			cell.setupCell(with: element)

@@ -25,15 +25,14 @@ class CommentViewModel {
 		setupInternalBinding()
 	}
 
+	func getData() {
+		commentDataManager.getData()
+	}
+
 	private func setupInternalBinding() {
 		commentDataManager.commentsSource.subscribe(onNext: { [weak self] comments in
 			guard let self = self else { return }
 			self.commentDisplayableInternal.accept([self.post] + comments)
 		   }).disposed(by: self.disposeBag)
 	}
-
-	func getData() {
-		commentDataManager.getData()
-	}
-	
 }

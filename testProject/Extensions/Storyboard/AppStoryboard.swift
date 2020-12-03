@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum AppStoryboard : String {
+enum AppStoryboard : String, CaseIterable {
     case PostViewController,
 		 PostDetailViewController
 	

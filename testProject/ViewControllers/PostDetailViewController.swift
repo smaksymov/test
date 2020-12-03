@@ -23,11 +23,15 @@ class PostDetailViewController: UIViewController {
 		}
 		tableView.dataSource = nil
 		tableView.delegate = nil
+		tableView.accessibilityIdentifier = "table-postsDetail"
 		setupBindingAndActions()
 		viewModel?.getData()
 	}
-	
-	func setupBindingAndActions() {
+	func configure(post: PostDisplayable) {
+		self.post = post
+	}
+
+	private func setupBindingAndActions() {
 		let postDetailCellIdentifier = "PostDetailCell"
 		let commentCellIdentifier = "CommentCell"
 
@@ -40,12 +44,14 @@ class PostDetailViewController: UIViewController {
 					return UITableViewCell()
 				}
 				cell.setupCell(postDisplayable: item)
+				cell.accessibilityIdentifier = "cell_\(row)"
 				return cell
 			case let item as CommentDisplayable:
 				guard let cell = tableView.dequeueReusableCell(withIdentifier: commentCellIdentifier, for: indexPath) as? CommentCell else {
 					return UITableViewCell()
 				}
 				cell.setupCell(commentDisplayable: item)
+				cell.accessibilityIdentifier = "cell_\(row)"
 				return cell
 			default:
 				return UITableViewCell()
@@ -54,9 +60,6 @@ class PostDetailViewController: UIViewController {
 		}.disposed(by: disposeBag)
 
 		
-	}
-	func configure(post: PostDisplayable) {
-		self.post = post
 	}
 	
 }
